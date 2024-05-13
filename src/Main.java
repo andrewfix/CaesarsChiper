@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static Scanner scanner2 = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
     public static String text = new String();
     public static String result = new String();
     public static int key;
