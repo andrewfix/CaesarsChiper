@@ -6,17 +6,17 @@ import java.util.Scanner;
 public class Main {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static String text = new String();
-    public static String result = new String();
+    public static String text = "";
+    public static String result = "";
     public static int key;
     public static CaesarsChiper chiper;
 
     public static void main(String[] args) throws IOException {
         showMenu();
-        while(scanner.hasNext()) {
+        while (scanner.hasNext()) {
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1","2","3","4" -> {
+                case "1", "2", "3", "4" -> {
                     enterKey();
                     chiper = new CaesarsChiper(key);
                 }
@@ -34,7 +34,7 @@ public class Main {
 
             try {
 
-                switch(choice) {
+                switch (choice) {
                     case "1" -> {
                         System.out.println("Введите строку для кодирования: ");
                         result = chiper.encodeText(scanner.next());
@@ -47,14 +47,14 @@ public class Main {
                         System.out.println("Результат декодирования:");
                         System.out.println(result);
                     }
-                    case "3","4" -> {
+                    case "3", "4" -> {
                         String srcFile, distFile;
                         System.out.println("Введите имя файла источника: ");
                         srcFile = scanner.next();
                         System.out.println("Введите имя файла для вывода результата: ");
                         distFile = scanner.next();
 
-                        if (choice.equals("3") ) {
+                        if (choice.equals("3")) {
                             chiper.encodeFile(srcFile, distFile);
                         } else {
                             chiper.decodeFile(srcFile, distFile);
@@ -68,11 +68,9 @@ public class Main {
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + choice);
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
-            }
-            finally {
+            } finally {
                 showMenu();
             }
         }
